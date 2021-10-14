@@ -41,14 +41,15 @@ df.show()
 
 print("Current csv file : " + workingdir + "/data/totals_stats.csv")
 
-spark.sql("CREATE BRANCH dev2 IN dev_catalog AS main")
-print("CREATED BRANCH dev2")
+spark.sql("CREATE BRANCH dev IN dev_catalog AS main")
+print("CREATED BRANCH dev")
 spark.sql("CREATE TABLE IF NOT EXISTS dev_catalog.warehouse.salaries (Season STRING, Team STRING, Salary STRING, Player STRING) USING iceberg");
 print("CREATED TABLE salaries")
-spark.sql("""CREATE OR REPLACE TEMPORARY VIEW salaries_table USING csv
-            OPTIONS (path "/Users/davenielsen/code/nessie-playground/data/salaries.csv", header true)""");
+spark.sql("""CREATE OR REPLACE TEMPORARY VIEW salaries_table USING csv OPTIONS (path "/Users/davenielsen/code/nessie-playground/data/salaries.csv", header true)""");
 print("CREATED TEMPORARY VIEW salaries_table")
 spark.sql('INSERT INTO dev_catalog.warehouse.salaries SELECT * FROM salaries_table');
 print("INSERTED INTO salaries_table into salaries")
+spark.sql("DROP BRANCH dev IN dev_catalog")
+print("DROPPED BRANCH dev")
 
 spark.stop()
