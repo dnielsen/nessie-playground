@@ -1,8 +1,9 @@
 """
 Use csv file as a Spark SQL data source.
 Run with:
-  ./bin/spark-submit examples/src/main/python/sql/datasource.py
+  ../spark-3.0.3-bin-hadoop2.7/bin/spark-submit --packages org.apache.iceberg:iceberg-spark3-runtime:0.11.1,org.projectnessie:nessie-spark-extensions:0.8.3 /Users/davenielsen/code/nessie-playground/csv-read.py
 """
+
 import os
 from pyspark.sql import SparkSession
 # from pyspark.sql import Row
