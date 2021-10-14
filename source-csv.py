@@ -13,7 +13,7 @@ def csv_read(spark):
 
     # A CSV dataset is pointed to by path.
     # The path can be either a single CSV file or a directory of CSV files
-    path = "data/totals_stats.csv"
+    path = "/Users/davenielsen/code/nessie-playground/data/totals_stats.csv"
 
     df = spark.read.csv(path)
     df.show()
