@@ -1,2 +1,2 @@
 # nessie-playground
-learning to work with nessie
+playing with nessie using PySpark with spark-submit
