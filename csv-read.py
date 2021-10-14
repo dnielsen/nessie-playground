@@ -9,13 +9,13 @@ from pyspark.sql import SparkSession
 # from pyspark.sql import Row
 # from pyspark.sql import *
 from pyspark import SparkConf
-import pynessie
+# import pynessie
 # findspark.init()
-pynessie_version = pynessie.__version__
+# pynessie_version = pynessie.__version__
 
 conf = SparkConf()
 # we need iceberg libraries and the nessie sql extensions
-conf.set("spark.jars.packages", f"org.apache.iceberg:iceberg-spark3-runtime:0.11.1,org.projectnessie:nessie-spark-extensions:{pynessie_version}")
+conf.set("spark.jars.packages", f"org.apache.iceberg:iceberg-spark3-runtime:0.12.0,org.projectnessie:nessie-spark-extensions:0.9.2")
 # ensure python <-> java interactions are w/ pyarrow
 conf.set("spark.sql.execution.pyarrow.enabled", "true")
 # create catalog dev_catalog as an iceberg catalog
@@ -34,16 +34,21 @@ conf.set("spark.sql.catalog.dev_catalog.auth_type", "NONE")
 conf.set("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions,org.projectnessie.spark.extensions.NessieSparkSessionExtensions")
 # finally, start up the Spark server
 spark = SparkSession.builder.config(conf=conf).getOrCreate()
-df = spark.read.csv("/Users/davenielsen/code/nessie-playground/data/totals_stats.csv")
+
+workingdir = os.getcwd() 
+df = spark.read.csv(workingdir + "/data/totals_stats.csv")
 df.show()
 
-print("Current working dir : %s" % os.getcwd())
-spark.sql("CREATE BRANCH dev IN dev_catalog AS main")
-print("CREATED BRANCH dev")
-spark.sql("""CREATE TABLE IF NOT EXISTS dev_catalog.warehouse.salaries (Season STRING, Team STRING, Salary STRING, Player STRING) USING iceberg""");
+print("Current csv file : " + workingdir + "/data/totals_stats.csv")
+
+spark.sql("CREATE BRANCH dev2 IN dev_catalog AS main")
+print("CREATED BRANCH dev2")
+spark.sql("CREATE TABLE IF NOT EXISTS dev_catalog.warehouse.salaries (Season STRING, Team STRING, Salary STRING, Player STRING) USING iceberg");
+print("CREATED TABLE salaries")
 spark.sql("""CREATE OR REPLACE TEMPORARY VIEW salaries_table USING csv
             OPTIONS (path "/Users/davenielsen/code/nessie-playground/data/salaries.csv", header true)""");
+print("CREATED TEMPORARY VIEW salaries_table")
 spark.sql('INSERT INTO dev_catalog.warehouse.salaries SELECT * FROM salaries_table');
-
+print("INSERTED INTO salaries_table into salaries")
 
 spark.stop()

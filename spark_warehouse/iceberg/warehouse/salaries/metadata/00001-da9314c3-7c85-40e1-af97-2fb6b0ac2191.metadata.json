@@ -1,0 +1,102 @@
+{
+  "format-version" : 1,
+  "table-uuid" : "945fe14a-2f7a-459a-a834-1de478cb5137",
+  "location" : "file:///Users/davenielsen/code/nessie-playground/spark_warehouse/iceberg/warehouse/salaries",
+  "last-updated-ms" : 1634206801769,
+  "last-column-id" : 4,
+  "schema" : {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "Season",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "Team",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "Salary",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "Player",
+      "required" : false,
+      "type" : "string"
+    } ]
+  },
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "Season",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "Team",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "Salary",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "Player",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "partition-spec" : [ ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "davenielsen"
+  },
+  "current-snapshot-id" : 7986152915640658861,
+  "snapshots" : [ {
+    "snapshot-id" : 7986152915640658861,
+    "timestamp-ms" : 1634206801769,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1634206791581",
+      "added-data-files" : "1",
+      "added-records" : "50",
+      "added-files-size" : "1919",
+      "changed-partition-count" : "1",
+      "total-records" : "50",
+      "total-files-size" : "1919",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "file:/Users/davenielsen/code/nessie-playground/spark_warehouse/iceberg/warehouse/salaries/metadata/snap-7986152915640658861-1-ad96243b-7e09-4ac5-aec9-7f4818e84163.avro",
+    "schema-id" : 0
+  } ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1634206801769,
+    "snapshot-id" : 7986152915640658861
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1634205784696,
+    "metadata-file" : "file:/Users/davenielsen/code/nessie-playground/spark_warehouse/iceberg/warehouse/salaries/metadata/00000-d2c38343-d5bb-45f8-a5d1-f31d4dd14e80.metadata.json"
+  } ]
+}
