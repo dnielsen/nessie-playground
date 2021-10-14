@@ -26,8 +26,10 @@ if __name__ == "__main2__":
     csv_read(spark)
 
 if __name__ == "__main__":
+"""
 import os
 import findspark
+"""
 from pyspark.sql import *
 from pyspark import SparkConf
 import pynessie
