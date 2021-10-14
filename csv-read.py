@@ -32,11 +32,11 @@ if __name__ == "__main2__":
 
 if __name__ == "__main__":
 
-from pyspark.sql import *
-from pyspark import SparkConf
-import pynessie
-findspark.init()
-pynessie_version = pynessie.__version__
+	from pyspark.sql import *
+	from pyspark import SparkConf
+	import pynessie
+	findspark.init()
+	pynessie_version = pynessie.__version__
 
 conf = SparkConf()
 	# we need iceberg libraries and the nessie sql extensions
